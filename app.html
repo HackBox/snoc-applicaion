@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="./button.css">
     <style>
         @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
@@ -22,6 +22,58 @@
             font-family: 'Open Sans', sans-serif;
             font-weight: 300;
             background: #FDFDFD;
+
+        }
+
+        .box {
+            position: relative;
+            /*Irrelevant code*/
+            width: 500px;
+            height: 100px;
+            box-sizing: border-box;
+            margin: 5px;
+            display: inline-flex;
+            font-size: 30px;
+            justify-content: center;
+            align-items: center;
+            line-height: 90px;
+            color: #0f1923;
+            margin-left: -100px;
+            margin-top: -90px;
+            font-weight: 400;
+            margin-bottom: 50px;
+        }
+
+        .box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--c, red);
+            -webkit-mask:
+                linear-gradient(#fff, #fff) top left,
+                linear-gradient(#fff, #fff) top left,
+                linear-gradient(#fff, #fff) bottom left,
+                linear-gradient(#fff, #fff) bottom left,
+                linear-gradient(#fff, #fff) top right,
+                linear-gradient(#fff, #fff) top right,
+                linear-gradient(#fff, #fff) bottom right,
+                linear-gradient(#fff, #fff) bottom right;
+            -webkit-mask-size: var(--b) var(--w), var(--w) var(--b);
+            -webkit-mask-repeat: no-repeat;
+            mask:
+                linear-gradient(#fff, #fff) top left,
+                linear-gradient(#fff, #fff) top left,
+                linear-gradient(#fff, #fff) bottom left,
+                linear-gradient(#fff, #fff) bottom left,
+                linear-gradient(#fff, #fff) top right,
+                linear-gradient(#fff, #fff) top right,
+                linear-gradient(#fff, #fff) bottom right,
+                linear-gradient(#fff, #fff) bottom right;
+            mask-size: var(--b) var(--w), var(--w) var(--b);
+            mask-repeat: no-repeat;
         }
 
         .mybox {
@@ -237,160 +289,6 @@
         body.menu-active .menu::before {
             background: rgba(240, 240, 240, 0.9);
         }
-
-
-
-
-
-
-
-
-
-
-        div a {
-            width: 100%;
-            max-width: 240px;
-            height: 54px;
-            padding: 8px;
-            font-size: 0.8rem;
-            font-weight: 900;
-            color: #558449;
-            text-align: center;
-            text-transform: uppercase;
-            text-decoration: none;
-            box-shadow: 0 0 0 1px inset rgba(236, 232, 225, 0.3);
-            position: relative;
-            margin: 10px 0;
-        }
-
-        div a.white:hover>p {
-            color: #ece8e1;
-        }
-
-        div a.white>p {
-            background: #ece8e1;
-            color: #0f1923;
-        }
-
-        div a.white>p span.base {
-            border: 1px solid transparent;
-        }
-
-        div a.transparent:hover>p {
-            color: #ece8e1;
-        }
-
-        div a.transparent:hover>p span.text {
-            box-shadow: 0 0 0 1px #ece8e1;
-        }
-
-        div a.transparent>p {
-            background: #0f1923;
-            color: #ece8e1;
-        }
-
-        div a.transparent>p span.base {
-            border: 1px solid #ece8e1;
-        }
-
-        div a:after,
-        div a:before {
-            content: "";
-            width: 1px;
-            position: absolute;
-            height: 8px;
-            background: #0f1923;
-            left: 0;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        div a:before {
-            right: 0;
-            left: initial;
-        }
-
-        div a p {
-            margin: 0;
-            height: 54px;
-            line-height: 54px;
-            box-sizing: border-box;
-            z-index: 1;
-            left: 0;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        div a p span.base {
-            box-sizing: border-box;
-            position: absolute;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            border: 1px solid #558449;
-        }
-
-        div a p span.base:before {
-            content: "";
-            width: 2px;
-            height: 2px;
-            left: -1px;
-            top: -1px;
-            background: #0f1923;
-            position: absolute;
-            -webkit-transition: 0.3s ease-out all;
-            transition: 0.3s ease-out all;
-        }
-
-        div a p span.bg {
-            left: -5%;
-            position: absolute;
-            background: #558449;
-            width: 0;
-            height: 100%;
-            z-index: 3;
-            -webkit-transition: 0.3s ease-out all;
-            transition: 0.3s ease-out all;
-            -webkit-transform: skewX(-10deg);
-            transform: skewX(-10deg);
-        }
-
-        div a p span.text {
-            z-index: 4;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        div a p span.text:after {
-            content: "";
-            width: 4px;
-            height: 4px;
-            right: 0;
-            bottom: 0;
-            background: #0f1923;
-            position: absolute;
-            -webkit-transition: 0.3s ease-out all;
-            transition: 0.3s ease-out all;
-            z-index: 5;
-        }
-
-        div a:hover {
-            color: #ece8e1;
-        }
-
-        div a:hover span.bg {
-            width: 110%;
-        }
-
-        div a:hover span.text:after {
-            background: #ece8e1;
-        }
     </style>
 </body>
 
@@ -404,7 +302,40 @@
             <div class="panel panel-left">
                 <div class="panel-content">
                     <div class="form col-sm-12">
-                        <h1>Application for <strong>SNOC</strong> frachise</h1>
+                        <a class="btn btn--svg js-animated-button" style="position: absolute;
+                        bottom: 0;background: #3b3b3b;" href="#project"><span class="btn--svg__label">Submit</span>
+                            <svg class="btn--svg__circle" width="190" x="0px" y="0px" viewBox="0 0 60 60"
+                                enable-background="new 0 0 60 60">
+                                <circle class="js-discover-circle" fill="#FFFFFF" cx="30" cy="30" r="28.7"></circle>
+                            </svg>
+                            <svg class="btn--svg__border" x="0px" y="0px" preserveaspectratio="none"
+                                viewBox="2 29.3 56.9 13.4" enable-background="new 2 29.3 56.9 13.4" width="190">
+                                <g class="btn--svg__border--left js-discover-left-border" id="Calque_2">
+                                    <path fill="none" stroke="#FFF" stroke-width="0.5" stroke-miterlimit="1"
+                                        d="M30.4,41.9H9c0,0-6.2-0.3-6.2-5.9S9,30.1,9,30.1h21.4"></path>
+                                </g>
+                                <g class="btn--svg__border--right js-discover-right-border" id="Calque_3">
+                                    <path fill="none" stroke="#FFF" stroke-width="0.5" stroke-miterlimit="1"
+                                        d="M30.4,41.9h21.5c0,0,6.1-0.4,6.1-5.9s-6-5.9-6-5.9H30.4"></path>
+                                </g>
+                            </svg></a>
+                        <!-- <div class="box" style="--c:repeating-linear-gradient(45deg,#558424,#686868);--w:20px;--b:5px">
+                            Application for SNOC franchise
+                        </div> -->
+                        <div style="border-radius: 5px;
+                        padding: 20px;
+                        margin-bottom: 40px;
+                        background: #3b3b3b;
+                        color: white;
+                        box-shadow: 10px 10px 13px -4px rgba(0,0,0,0.75);
+                        font-size: 25px;
+                        width: 400px;
+                        font-weight: 500;
+                        margin-left: -50px;
+                        margin-top: -50px;
+                        ">
+                            Application for SNOC franchise
+                        </div>
                         <div class="group">
                             <input type="text" required>
                             <span class="highlight"></span>
@@ -426,10 +357,10 @@
                             <label>Description</label>
                         </div>
 
-                        <div><a href="#">
+                        <!-- <div><a href="#">
                                 <p><span class="bg"></span><span class="base"></span><span class="text">Submit
                                     </span></p>
-                            </a></div>
+                            </a></div> -->
                     </div>
                 </div>
             </div>

@@ -1,0 +1,747 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i");
+
+        .heading-text {
+            position: absolute;
+            right: 50%;
+            top: 40px;
+            transform: translate(50%, -50%);
+            text-transform: uppercase;
+            font-family: verdana;
+            font-size: 50px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0.5px 0.5px 0.5px #919191,
+                1px 2px 1px #919191,
+                1px 3px 1px #919191,
+                1px 4px 1px #919191,
+                1px 5px 1px #919191,
+                1px 6px 1px #919191,
+                1px 7px 1px #919191,
+                1px 8px 1px #919191,
+                1px 9px 1px #919191,
+                1px 10px 1px #919191,
+                1px 18px 6px rgba(16, 16, 16, 0.4),
+                1px 22px 10px rgba(16, 16, 16, 0.2),
+                1px 25px 35px rgba(16, 16, 16, 0.2),
+                1px 30px 60px rgba(16, 16, 16, 0.4);
+        }
+
+
+        .about {
+            position: fixed;
+            z-index: 10;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            transition: all 0.2s ease;
+        }
+
+        .about .bg_links {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 100%;
+            backdrop-filter: blur(5px);
+            position: absolute;
+        }
+
+        .about .logo {
+            width: 40px;
+            height: 40px;
+            z-index: 9;
+            background-image: url(https://rafaelalucas91.github.io/assets/codepen/logo_white.svg);
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: 10px 7px;
+            opacity: 0.9;
+            transition: all 1s 0.2s ease;
+            bottom: 0;
+            right: 0;
+        }
+
+        .about .social {
+            opacity: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .about .social .icon {
+            width: 100%;
+            height: 100%;
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: transparent;
+            display: flex;
+            transition: all 0.2s ease, background-color 0.4s ease;
+            opacity: 0;
+            border-radius: 100%;
+        }
+
+        .about .social.portfolio {
+            transition: all 0.8s ease;
+        }
+
+        .about .social.portfolio .icon {
+            background-image: url(https://rafaelalucas91.github.io/assets/codepen/link.svg);
+        }
+
+        .about .social.dribbble {
+            transition: all 0.3s ease;
+        }
+
+        .about .social.dribbble .icon {
+            background-image: url(https://rafaelalucas91.github.io/assets/codepen/dribbble.svg);
+        }
+
+        .about .social.linkedin {
+            transition: all 0.8s ease;
+        }
+
+        .about .social.linkedin .icon {
+            background-image: url(https://rafaelalucas91.github.io/assets/codepen/linkedin.svg);
+        }
+
+        .about:hover {
+            width: 105px;
+            height: 105px;
+            transition: all 0.6s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+        }
+
+        .about:hover .logo {
+            opacity: 1;
+            transition: all 0.6s ease;
+        }
+
+        .about:hover .social {
+            opacity: 1;
+        }
+
+        .about:hover .social .icon {
+            opacity: 0.9;
+        }
+
+        .about:hover .social:hover {
+            background-size: 28px;
+        }
+
+        .about:hover .social:hover .icon {
+            background-size: 65%;
+            opacity: 1;
+        }
+
+        .about:hover .social.portfolio {
+            right: 0;
+            bottom: calc(100% - 40px);
+            transition: all 0.3s 0s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+        }
+
+        .about:hover .social.portfolio .icon:hover {
+            background-color: #698fb7;
+        }
+
+        .about:hover .social.dribbble {
+            bottom: 45%;
+            right: 45%;
+            transition: all 0.3s 0.15s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+        }
+
+        .about:hover .social.dribbble .icon:hover {
+            background-color: #ea4c89;
+        }
+
+        .about:hover .social.linkedin {
+            bottom: 0;
+            right: calc(100% - 40px);
+            transition: all 0.3s 0.25s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+        }
+
+        .about:hover .social.linkedin .icon:hover {
+            background-color: #0077b5;
+        }
+
+        /* main 1*/
+        /* main 2*/
+        /* neutral 1*/
+        /* neutral 2*/
+        body {
+            font-family: "IBM Plex Sans", sans-serif;
+            margin: 0;
+            height: 100%;
+        }
+
+        #wrapper {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .content {
+            height: 80%;
+            width: 100%;
+            transition: 0.3s ease;
+        }
+
+        /* Tabs menu */
+        .tabs {
+            margin: 0;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            border-radius: 2px 2px 0px 0px;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tabs {
+                height: 40px;
+            }
+        }
+
+        /* Tab Links */
+        .tablinks {
+            background: transparent;
+            background-image: linear-gradient(90deg, transparent 70%, rgba(255, 255, 255, 0.2) 100%);
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 25%;
+            /*change depending on the number of tabs*/
+            height: 80px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-family: "IBM Plex Sans", sans-serif;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tablinks {
+                height: 40px;
+                font-size: 12px;
+            }
+        }
+
+        .tablinks:before {
+            background: linear-gradient(to right, #558424, #3b3b3b);
+
+            content: "";
+            width: 100%;
+            height: 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        /*tab buttons hover*/
+        .tablinks:hover::before {
+            height: 100%;
+            z-index: 2;
+            bottom: 0;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tablinks:hover::before {
+                height: 0;
+            }
+        }
+
+        /* Tab active */
+        .tablinks.active {
+            background-color: white;
+            z-index: 0;
+            border-right: 0px;
+            border-left: 0px;
+            height: 110px;
+            bottom: 0px;
+            overflow: hidden;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tablinks.active {
+                height: 60px;
+            }
+        }
+
+        .tablinks.active:before {
+            content: "";
+            width: 100%;
+            height: 5px;
+            top: 0;
+            left: 0;
+        }
+
+        /* Tabs text */
+        .tablinks.active p,
+        .tablinks.active:hover p {
+            opacity: 1;
+            background: linear-gradient(to right, #558424, #3b3b3b);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tablinks p {
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: 0.5s ease;
+            padding: 0;
+            margin: 0;
+            color: #686868;
+            backface-visibility: hidden;
+            font-weight: 400;
+        }
+
+        .tablinks:hover p {
+            color: white;
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tablinks:hover p {
+                color: #686868;
+                opacity: 0.6;
+            }
+        }
+
+        /* Tabs text bigger */
+        .tablinks p:before {
+            content: attr(data-title);
+            position: absolute;
+            height: auto;
+            width: auto;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.1;
+            font-size: 40px;
+            transition: 1s ease-out;
+            z-index: -1;
+            font-weight: 600;
+            top: 110%;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tablinks p:before {
+                display: none;
+            }
+        }
+
+        .tablinks:hover p:before {
+            opacity: 0.1;
+            font-size: 40px;
+            top: -80%;
+        }
+
+        /* tab content */
+        .wrapper_tabcontent {
+            background-color: white;
+            margin-top: 0px;
+            z-index: 100;
+            height: 85%;
+            position: relative;
+            opacity: 1;
+            padding: 40px 60px;
+            overflow: hidden;
+            transition: all 1s ease;
+            top: 0;
+        }
+
+        .tabcontent {
+            display: none;
+            min-height: 180px;
+        }
+
+        @keyframes tabEffect {
+            from {
+                top: -40px;
+            }
+
+            to {
+                top: 0px;
+            }
+        }
+
+        .tabcontent.active {
+            transition: all 1s ease;
+            display: block;
+        }
+
+        /* Tab content line */
+        .wrapper_tabcontent:after {
+            content: "";
+            height: 5px;
+            width: 100%;
+            position: absolute;
+            background: linear-gradient(to right, #558424, #3b3b3b);
+
+            left: 0;
+            bottom: 0;
+            z-index: -2;
+            transition: all 1s ease;
+        }
+
+        /* Title */
+        .tabcontent h3 {
+            font-size: 40px;
+            top: 75px;
+            transform: rotate(90deg);
+            position: absolute;
+            left: -90px;
+            opacity: 0.1;
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(to right, #558424, #3b3b3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 0;
+            animation: city 1s ease;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tabcontent h3 {
+                top: 65px;
+            }
+        }
+
+        @keyframes city {
+            from {
+                left: -150px;
+            }
+
+            to {
+                left: -90px;
+            }
+        }
+
+        /* Text*/
+        .tabcontent p {
+            color: #686868;
+            margin: 0;
+            padding: 0;
+            line-height: 28px;
+            font-weight: 100;
+            transition: all 1s ease;
+            animation: fadeEffect 0.6s ease;
+            width: 100%;
+            font-size: 16px;
+            font-family: "IBM Plex Sans", sans-serif;
+        }
+
+        @media screen and (max-width: 512px) {
+            .tabcontent p {
+                font-size: 14px;
+                line-height: 26px;
+            }
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+                margin-left: 30px;
+            }
+
+            to {
+                opacity: 1;
+                margin-left: 0;
+            }
+        }
+
+        .selected_form {
+            height: 80%;
+            color: black;
+            border-radius: 3%;
+            box-shadow: 10px 10px 21px -16px rgba(0, 0, 0, 0.75);
+            color: #558424;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- about -->
+    <!-- <div class="about">
+        <a class="bg_links social portfolio" href="https://www.rafaelalucas.com" target="_blank">
+            <span class="icon"></span>
+        </a>
+        <a class="bg_links social dribbble" href="https://dribbble.com/rafaelalucas" target="_blank">
+            <span class="icon"></span>
+        </a>
+        <a class="bg_links social linkedin" href="https://www.linkedin.com/in/rafaelalucas/" target="_blank">
+            <span class="icon"></span>
+        </a>
+        <a class="bg_links logo"></a>
+    </div> -->
+    <!-- end about -->
+    <div>
+        <center>
+            <div class="heading-text">SNOC Dashboard</div>
+        </center>
+    </div>
+
+    <div id="wrapper" class="row mt-5">
+        <div class="content col-md-8 col-sm-12">
+            <!-- Tab links -->
+            <div class="tabs">
+                <div class="tablinks active" data-country="Going">
+                    <p data-title="Going">On Going</p>
+                </div>
+                <div class="tablinks" data-country="Accepted">
+                    <p data-title="Accepted">Accepted</p>
+                </div>
+                <div class="tablinks" data-country="Rejected">
+                    <p data-title="Rejected">Rejected</p>
+                </div>
+                <div class="tablinks" data-country="Saved">
+                    <p data-title="Saved">Saved for Later</p>
+                </div>
+            </div>
+
+            <!-- Tab content -->
+            <div class="wrapper_tabcontent">
+                <div id="going" class="tabcontent active">
+                    <h3>ON Going</h3>
+                    <p>
+                    <table class="table table-hover" style="padding: 40px;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Budget</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>Emirates</td>
+                                <td>10000</td>
+                                <td>Hakoona matata</td>
+                                <td><button class="btn btn-primary" value="View" onclick="toggleForm(0)">
+                                        View
+                                    </button>
+                                    <button class="btn btn-warning" value="View PDF" class="ml-3"
+                                        onclick="toggleForm(1)">
+                                        View PDF
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Emirates</td>
+                                <td>10000</td>
+                                <td>Hakoona matata</td>
+                                <td><button class="btn btn-primary" value="View" onclick="toggleForm(0)">
+                                        View
+                                    </button>
+                                    <button class="btn btn-warning" value="View PDF" class="ml-3"
+                                        onclick="toggleForm(1)">
+                                        View PDF
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Emirates</td>
+                                <td>10000</td>
+                                <td>Hakoona matata</td>
+                                <td><button class="btn btn-primary" value="View" onclick="toggleForm(0)">
+                                        View
+                                    </button>
+                                    <button class="btn btn-warning" value="View PDF" class="ml-3"
+                                        onclick="toggleForm(1)">
+                                        View PDF
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Emirates</td>
+                                <td>10000</td>
+                                <td>Hakoona matata</td>
+                                <td><button class="btn btn-primary" value="View" onclick="toggleForm(0)">
+                                        View
+                                    </button>
+                                    <button class="btn btn-warning" value="View PDF" class="ml-3"
+                                        onclick="toggleForm(1)">
+                                        View PDF
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    </p>
+                </div>
+
+                <div id="Accepted" class="tabcontent">
+                    <h3>Accepted</h3>
+                    <p>No Accepted Applications</p>
+                </div>
+
+                <div id="Rejected" class="tabcontent">
+                    <h3>Rejected</h3>
+                    <p>No Rejected Applications</p>
+                </div>
+
+                <div id="Saved" class="tabcontent">
+                    <h3>Saved</h3>
+                    <p>No Saved Applications</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="selected_form col-md-4 col-sm-12">
+            <div id="user-form">
+                <center>
+                    <h2 class="mb-3 mt-5">Application Details</h2>
+                    <hr>
+                    <p>Name : John</p>
+                    <p>Location : Emirates</p>
+                    <p>Budget : 10000</p>
+                    <p>Description : Hakoona matata </p>
+                    <div style="width: 100%; position: absolute; bottom: 0;" class="p-5">
+                        <div style="display: flex;justify-content: space-between;"><button
+                                class="btn btn-success">Accept</button>
+                            <button class="btn btn-danger">Reject</button></div>
+                    </div>
+                </center>
+            </div>
+            <div id="user-pdf" style="display: none;">
+                <center>
+                    <h2 class="mb-3 mt-5">PDF Document</h2>
+                    <hr>
+                    <canvas id="the-canvas"></canvas>
+                </center>
+            </div>
+
+        </div>
+    </div>
+    <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    <script>
+        var tabLinks = document.querySelectorAll(".tablinks");
+        var tabContent = document.querySelectorAll(".tabcontent");
+
+        tabLinks.forEach(function (el) {
+            el.addEventListener("click", openTabs);
+        });
+
+        function openTabs(el) {
+            var btnTarget = el.currentTarget;
+            var country = btnTarget.dataset.country;
+
+            tabContent.forEach(function (el) {
+                el.classList.remove("active");
+            });
+
+            tabLinks.forEach(function (el) {
+                el.classList.remove("active");
+            });
+
+            document.querySelector("#" + country).classList.add("active");
+
+            btnTarget.classList.add("active");
+        }
+
+
+        //Toggle Form
+        function toggleForm(type) {
+            console.log(type);
+            if (type == 1) {
+                document.getElementById("user-form").style.display = "none";
+                document.getElementById("user-pdf").style.display = "block";
+            }
+            else {
+                document.getElementById("user-pdf").style.display = "none";
+                document.getElementById("user-form").style.display = "block";
+
+            }
+        }
+        //pdf viewer helper
+        var pdfData = atob(
+            'JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwog' +
+            'IC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAv' +
+            'TWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0K' +
+            'Pj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSCiAg' +
+            'L1Jlc291cmNlcyA8PAogICAgL0ZvbnQgPDwKICAgICAgL0YxIDQgMCBSIAogICAgPj4KICA+' +
+            'PgogIC9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKCjQgMCBvYmoKPDwKICAvVHlwZSAvRm9u' +
+            'dAogIC9TdWJ0eXBlIC9UeXBlMQogIC9CYXNlRm9udCAvVGltZXMtUm9tYW4KPj4KZW5kb2Jq' +
+            'Cgo1IDAgb2JqICAlIHBhZ2UgY29udGVudAo8PAogIC9MZW5ndGggNDQKPj4Kc3RyZWFtCkJU' +
+            'CjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8sIHdvcmxkISkgVGoKRVQKZW5kc3RyZWFtCmVu' +
+            'ZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4g' +
+            'CjAwMDAwMDAwNzkgMDAwMDAgbiAKMDAwMDAwMDE3MyAwMDAwMCBuIAowMDAwMDAwMzAxIDAw' +
+            'MDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9v' +
+            'dCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G');
+
+        // Loaded via <script> tag, create shortcut to access PDF.js exports.
+        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+        // Using DocumentInitParameters object to load binary data.
+        var loadingTask = pdfjsLib.getDocument({ data: pdfData });
+        loadingTask.promise.then(function (pdf) {
+            console.log('PDF loaded');
+
+            // Fetch the first page
+            var pageNumber = 1;
+            pdf.getPage(pageNumber).then(function (page) {
+                console.log('Page loaded');
+
+                var scale = 1.5;
+                var viewport = page.getViewport({ scale: scale });
+
+                // Prepare canvas using PDF page dimensions
+                var canvas = document.getElementById('the-canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render PDF page into canvas context
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                var renderTask = page.render(renderContext);
+                renderTask.promise.then(function () {
+                    console.log('Page rendered');
+                });
+            });
+        }, function (reason) {
+            // PDF loading error
+            console.error(reason);
+        });
+    </script>
+</body>
+
+</html>
